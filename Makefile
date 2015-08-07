@@ -36,22 +36,23 @@ LINKERFLAGS = $(shell root-config --ldflags --libs) -lEG -lGenVector -lTMVA
 #DIR = /Users/cerati/SSAnalysis/SSAnalysis/
 DIR = ./
 
-CORESOURCES=$(DIR)/$(COREDIR)/CMS3.cc \
- $(DIR)/$(COREDIR)/Base.cc \
- $(DIR)/$(COREDIR)/ElectronSelections.cc \
- $(DIR)/$(COREDIR)/MuonSelections.cc \
- $(DIR)/$(COREDIR)/JetSelections.cc \
- $(DIR)/$(COREDIR)/MetSelections.cc \
- $(DIR)/$(COREDIR)/VertexSelections.cc \
- $(DIR)/$(COREDIR)/TriggerSelections.cc \
- $(DIR)/$(COREDIR)/MCSelections.cc \
- $(DIR)/$(COREDIR)/IsolationTools.cc \
- $(DIR)/$(COREDIR)/SSSelections.cc
+#CORESOURCES=$(DIR)/$(COREDIR)/CMS3.cc \
+# $(DIR)/$(COREDIR)/Base.cc \
+# $(DIR)/$(COREDIR)/ElectronSelections.cc \
+# $(DIR)/$(COREDIR)/MuonSelections.cc \
+# $(DIR)/$(COREDIR)/JetSelections.cc \
+# $(DIR)/$(COREDIR)/MetSelections.cc \
+# $(DIR)/$(COREDIR)/VertexSelections.cc \
+# $(DIR)/$(COREDIR)/TriggerSelections.cc \
+# $(DIR)/$(COREDIR)/MCSelections.cc \
+# $(DIR)/$(COREDIR)/IsolationTools.cc \
+# $(DIR)/$(COREDIR)/SSSelections.cc
+CORESOURCES=$(wildcard $(COREDIR)/*.cc) $(wildcard $(COREDIR)/Tools/*.cc) $(wildcard $(COREDIR)/Tools/MT2/*.cc)
 COREOBJECTS=$(CORESOURCES:.cc=.o)
 CORELIB=libCMS3CORE.so
 
 #SOURCES = $(wildcard $(DIR)/*.cc)
-SOURCES = ScanChain.C main.C PlotUtilities.C
+SOURCES = MyScanChain.C main.C PlotUtilities.C
 OBJECTS = $(SOURCES:.C=.o)
 LIB = liblooper.so
 
@@ -123,6 +124,7 @@ clean: loopclean
 	rm -f \
 	$(CORELIB) \
 	./$(COREDIR)/*.o \
-	./Tools/MT2/*.o \
+	./$(COREDIR)/Tools/*.o \
+	./$(COREDIR)/Tools/MT2/*.o \
 
 endif
