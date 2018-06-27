@@ -12,8 +12,8 @@ int main(int argc, char **argv) {
   if (argc < 2) {
     sample = "default";
     cout<<"Using default file. "<<endl;
-    result->Add("merged_ntuple_1.root");
-    //    result->Add("/hadoop/cms/store/group/snt/run2_50ns/TTJets_TuneCUETP8M1_13TeV-madgraphMLM-pythia8_RunIISpring15DR74-Asympt50ns_MCRUN2_74_V9A-v1/V07-04-03/merged_ntuple_1.root");
+    //    result->Add("merged_ntuple_1.root");
+    result->Add("/hadoop/cms/store/group/snt/run2_mc2017//TTGamma_SingleLeptFromT_TuneCP5_PSweights_13TeV_madgraph_pythia8_RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1_MINIAODSIM_CMS4_V09-04-13//merged_ntuple_1.root");
   }
   else {
     sample = (TString) argv[1];
